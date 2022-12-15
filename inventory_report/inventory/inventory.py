@@ -41,6 +41,9 @@ class Inventory:
 
     @staticmethod
     def open_xml(path, type):
+        # Aplicação da leitura de arquivos XML proveniente do Stack OverFlow
+        # source: https://stackoverflow.com/questions/40154727/how-to-use-xml
+        # todict-to-get-items-out-of-an-xml-file
         with open(path) as file:
             inventory = xmltodict.parse(file.read())['dataset']['record']
             if type == 'simples':
