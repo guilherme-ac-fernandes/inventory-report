@@ -2,6 +2,7 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 import csv
 import json
+import xmltodict
 
 
 class Inventory:
@@ -11,6 +12,10 @@ class Inventory:
             return Inventory.open_csv(path, type)
         elif 'json' in path:
             return Inventory.open_json(path, type)
+        elif 'xml' in path:
+            return Inventory.open_xml(path, type)
+        else:
+            raise ValueError('Invalid format file')
 
     @staticmethod
     def open_csv(path, type):
@@ -21,7 +26,7 @@ class Inventory:
             elif type == 'completo':
                 return CompleteReport.generate(list(inventory))
             else:
-                raise ValueError('Type invalid')
+                raise ValueError('Invalid Type')
 
     @staticmethod
     def open_json(path, type):
@@ -32,4 +37,15 @@ class Inventory:
             elif type == 'completo':
                 return CompleteReport.generate(inventory)
             else:
-                raise ValueError('Type invalid')
+                raise ValueError('Invalid Type')
+
+    @staticmethod
+    def open_xml(path, type):
+        with open(path) as file:
+            inventory = xmltodict.parse(file.read())['dataset']['record']
+            if type == 'simples':
+                return SimpleReport.generate(inventory)
+            elif type == 'completo':
+                return CompleteReport.generate(inventory)
+            else:
+                raise ValueError('Invalid Type')
