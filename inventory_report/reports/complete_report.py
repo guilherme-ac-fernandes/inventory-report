@@ -26,4 +26,3 @@ class CompleteReport(SimpleReport):
             f"Produtos estocados por empresa:\n"
             f"{company_amount_list}"
         )
-
