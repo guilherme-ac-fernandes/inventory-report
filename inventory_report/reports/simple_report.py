@@ -10,9 +10,9 @@ class SimpleReport:
 
         oldest_date = min([item["data_de_fabricacao"] for item in list])
 
-        closest_date = min(([item["data_de_validade"]
+        closest_date = min([item["data_de_validade"]
                             for item in list
-                            if item["data_de_validade"] > today_date]))
+                            if item["data_de_validade"] > today_date])
 
         company_bigger_stock, _ = Counter([item["nome_da_empresa"]
                                            for item in list]).most_common()[0]
