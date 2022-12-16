@@ -4,7 +4,7 @@ import xmltodict
 
 class XmlImporter(Importer):
     @classmethod
-    def import_data(cls, path):
+    def import_data(self, path):
         if 'xml' not in path:
             raise ValueError('Arquivo inválido')
         with open(path) as file:
