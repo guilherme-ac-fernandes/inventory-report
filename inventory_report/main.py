@@ -5,25 +5,30 @@ from inventory_report.importer.xml_importer import XmlImporter
 import sys
 
 
-def main():
-    if len(sys.argv) <= 3 and (sys.argv[-2] == '' or sys.argv[-1] == ''):
-        print(ValueError('Verifique os argumentos'), file=sys.stderr)
-        return
-    path, type = sys.argv[-2], sys.argv[-1]
+def select_file_type(path):
     if path.endswith('.csv'):
-        print(InventoryRefactor(CsvImporter).import_data(path, type))
-        return
+        return CsvImporter
     elif path.endswith('.json'):
-        print(InventoryRefactor(JsonImporter).import_data(path, type))
-        return
+        return JsonImporter
     elif path.endswith('.xml'):
-        print(InventoryRefactor(XmlImporter).import_data(path, type))
-        return
+        return XmlImporter
     else:
         raise ValueError('Invalid format file')
 
 
-# main()
+def main():
+    if len(sys.argv) <= 3:
+        print(ValueError('Verifique os argumentos'), file=sys.stderr)
+        return
+    path, type = sys.argv[-2], sys.argv[-1]
+
+    file_type = select_file_type(path)
+    report = InventoryRefactor(file_type).import_data(path, type)
+    print(report, end="")
+
+
+if __name__ == "__main__":
+    main()
 
 # "Data de fabricação mais antiga: 2020-09-06\n"
 # "Data de validade mais próxima: 2023-09-17\n"
