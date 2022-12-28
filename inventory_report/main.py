@@ -17,10 +17,12 @@ def select_file_type(path):
 
 
 def main():
-    if len(sys.argv) <= 3:
+    if len(sys.argv) < 3:
         print(ValueError('Verifique os argumentos'), file=sys.stderr)
         return
-    path, type = sys.argv[-2], sys.argv[-1]
+
+    # path, type = sys.argv[-2], sys.argv[-1]
+    *_, path, type = sys.argv
 
     file_type = select_file_type(path)
     report = InventoryRefactor(file_type).import_data(path, type)
@@ -29,3 +31,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# python3 -m inventory_report.main inventory_report/data/inventory.xml completo
