@@ -29,10 +29,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# "Data de fabricação mais antiga: 2020-09-06\n"
-# "Data de validade mais próxima: 2023-09-17\n"
-# "Empresa com mais produtos: Target Corporation"
-# "Data de fabricação mais antiga: 2020-09-06\n"
-# "Data de validade mais próxima: 2023-09-17\n"
-# "Empresa com mais produtos: Target Corporation"
