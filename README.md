@@ -71,7 +71,7 @@ docker-compose run --rm inventory pytest
 
 Relatório Simples
 
-comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.csv simples`
+> Comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.csv simples`
 
 ```
 Data de fabricação mais antiga: 2020-09-06
@@ -81,7 +81,7 @@ Empresa com mais produtos: Target Corporation
 
 Relatório Completo
 
-comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.xml completo`
+> Comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.xml completo`
 
 ```
 Data de fabricação mais antiga: 2020-09-06
