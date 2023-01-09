@@ -1,13 +1,97 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto Inventory Report 📑📈
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Consiste em uma aplicação para geração de relatórios que recebe como entrada arquivos com dados de um estoque e gera, como saída, um relatório acerca destes dados. A aplicação tem suporte para arquivos nos formatos: `JSON`, `CSV` e `XML`.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+* Construído utilizando Python e os princípios da Programação Orientada a Objetos
+
+<details>
+  <summary><strong>Descrição das classes criadas:</strong></summary><br />
+
+| Classe | Descrição | Localização |
+|---|---|---|
+| `simple_report` | Classe para gerar a versão simplificada do relatório | `inventory_report/reports/simple_report.py` |
+| `complete_report` | Classe para gerar a versão completa do relatório | `inventory_report/reports/complete_report.py` |
+| `inventory` | Classe para gerar os relatório a partir de arquivos | `inventory_report/inventory/inventory.py` |
+| `importer` | Classe abstrata para aplicar o padrão de projeto `Strategy` | `inventory_report/importer/importer.py` |
+| `inventory_iterator` | Refatoração da classe `Inventory` para aplicar o padrão de projeto `Iterator` | `inventory_report/inventory/inventory_iterator.py` |
+
+<br />
+</details>
+
+<details>
+  <summary><strong>Descrição dos testes criados:</strong></summary><br />
+ 
+| Teste | Descrição | Localização |
+|---|---|---|
+| `test_product` | Implementação dos testes para a classe `Product` | `tests/product/test_product.py` |
+| `test_product_report` | Implementação dos testes para a  a criação do relatório presente na classe `Product` | `tests/product_report/test_product_report.py` |
+| `test_report_decorator` | Implementação dos testes para a classe `ColoredReport` | `tests/report_decorator/test_report_decorator.py` |
+
+<br />
+</details>
+
+
+
+### Instruções
+
+- Para rodar a aplicação localmente e os testes, realize o clone do projeto e utilize os comandos a seguir:
+
+```
+Para instalar as dependências e iniciar as aplicações:
+<-- na raiz do projeto -->
+python3 -m venv .venv // para criar o ambiente virtual
+source .venv/bin/activate // para ativar o ambiente virtual
+python3 -m pip install -r dev-requirements.txt // instalação das dependências
+
+Para gerar os relatórios via linha de comando:
+<-- na raiz do projeto -->
+pip install . // para instalar a dependência da linha de comando
+inventory_report <argumento1> <argumento2>
+--> <argumento1> = deve receber o caminho de um arquivo a ser importado
+--> <argumento2> = formato do relatório (simples ou completo)
+ou
+python3 -m inventory_report.main <argumento1> <argumento2>
+
+Para rodar todos os testes:
+<-- na raiz do projeto -->
+python3 -m pytest
+
+Para rodar os testes individualmente:
+<-- na raiz do projeto -->
+python3 -m pytest -k test_cria_produto
+python3 -m pytest -k test_relatorio_produto
+python3 -m pytest -k test_decorar_relatorio
+
+Para rodar os testes utilizando Docker:
+<-- na raiz do projeto -->
+docker-compose run --rm inventory pytest
+```
+
+### Demonstração
+
+Relatório Simples
+
+comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.csv simples`
+
+```
+Data de fabricação mais antiga: 2020-09-06
+Data de validade mais próxima: 2023-09-17
+Empresa com mais produtos: Target Corporation
+```
+
+Relatório Completo
+
+comando: `python3 -m inventory_report.main ./inventory_report/data/inventory.xml completo`
+
+```
+Data de fabricação mais antiga: 2020-09-06
+Data de validade mais próxima: 2023-09-17
+Empresa com mais produtos: Target Corporation
+Produtos estocados por empresa:
+- Target Corporation: 4
+- Galena Biopharma: 2
+- Cantrell Drug Company: 2
+- Moore Medical LLC: 1
+- REMEDYREPACK: 1
+```
+
