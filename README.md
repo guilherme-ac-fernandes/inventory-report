@@ -2,7 +2,7 @@
 
 Consiste em uma aplicação para geração de relatórios que recebe como entrada arquivos com dados de um estoque e gera, como saída, um relatório acerca destes dados. A aplicação tem suporte para arquivos nos formatos: `JSON`, `CSV` e `XML`.
 
-* Construído utilizando Python e os princípios da Programação Orientada a Objetos
+* Construído utilizando Python, princípios da Programação Orientada a Objetos e Padrões de Projetos
 
 <details>
   <summary><strong>Descrição das classes criadas:</strong></summary><br />
