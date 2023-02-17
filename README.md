@@ -1,4 +1,4 @@
-# Inventory Report 📑📈
+# Projeto Inventory Report 📑📈
 
 Consiste em uma aplicação para geração de relatórios que recebe como entrada arquivos com dados de um estoque e gera, como saída, um relatório acerca destes dados. A aplicação tem suporte para arquivos nos formatos: `JSON`, `CSV` e `XML`.
 
